@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6-Digit Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="calculator-container">
+    <h1>6-Digit Calculator</h1>
+    
+    <section class="calculator">
+      <label for="num1">Number 1:</label>
+      <input type="text" id="num1" aria-label="First number input" maxlength="7">
+      
+      <label for="num2">Number 2:</label>
+      <input type="text" id="num2" aria-label="Second number input" maxlength="7">
+      
+      <div class="buttons">
+        <button id="addBtn" aria-pressed="false">+</button>
+        <button id="subBtn" aria-pressed="false">-</button>
+      </div>
+      
+      <div id="result" aria-live="polite"></div>
+      <div id="error" role="alert"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
