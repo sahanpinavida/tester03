@@ -13,8 +13,8 @@ const MAX_DIGITS = 6;
 // Validate input
 function validateInput(value) {
   if (!value) return false;
-  // Optional leading minus
-  if (!/^[-]?\d{1,6}454554545454545assadasdasd$/.test(value)) return false;
+  // Optional leading minus, 1-6 digits
+  if (!/^[-]?\d{1,6}$/.test(value)) return false;
   return true;
 }
 
@@ -39,6 +39,26 @@ function updateDisplay(message, type = 'result') {
 }
 
 // Handle button click
+function handleCalculation(operator) {
+  const val1 = num1Input.value;
+  const val2 = num2Input.value;
+
+  // Validate both inputs
+  if (!validateInput(val1) || !validateInput(val2)) {
+    updateDisplay('Invalid input. Enter numbers with max 6 digits.', 'error');
+    return;
+  }
+
+  const num1 = parseInt(val1, 10);
+  const num2 = parseInt(val2, 10);
+  const result = calculateResult(num1, num2, operator);
+
+  if (result === 'Overflow') {
+    updateDisplay('Result exceeds 6-digit limit.', 'error');
+  } else {
+    updateDisplay('Result: ' + result, 'result');
+  }
+}
 
 // Event listeners
 addBtn.addEventListener('click', () => handleCalculation('+'));
